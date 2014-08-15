@@ -1,5 +1,6 @@
-//////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewsModels/ActivityStreamViewModel.cs
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class ActivityStreamViewModel : ViewModelBase
 {
@@ -18,47 +19,60 @@ public class ActivityStreamViewModel : ViewModelBase
 	}
 }
 
-//////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Views/ActivityStream.xaml
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:vm="clr-namespace:MobileApp.ViewModels;assembly=MobileApp"
 	x:Class="MobileApp.Views.ActivityStream"
 	Title="Activity stream">
 
-	<ContentPage.BindingContext>
-		<vm:ActivityStreamViewModel />
-	</ContentPage.BindingContext>
-
-	<ListView ItemsSource="{Binding TimeEntries}">
-		<ListView.ItemTemplate>
-			<DataTemplate>
-				<ViewCell>
-					<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*" />
-							<ColumnDefinition Width="Auto" />
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="*" />
-						</Grid.RowDefinitions>
-						<Grid.Padding>
-							<Thickness Left="12" Right="12" />
-						</Grid.Padding>
-
-						<Label Grid.Column="0" Grid.Row="0" Text="{Binding taskName}" YAlign="Center" Font="Bold" />
-
-						<Label Grid.Column="1" Grid.Row="0" Text="{Binding hours}" YAlign="Center" />
-					</Grid>
-				</ViewCell>
-			</DataTemplate>
-		</ListView.ItemTemplate>
+	<ListView>
+		<!-- ItemTemplate -->
 	</ListView>
 </ContentPage>
 
-//////////////////////////////
+<ListView.ItemTemplate>
+	<DataTemplate>
+		<ViewCell>
+			<!-- Grid -->
+		</ViewCell>
+	</DataTemplate>
+</ListView.ItemTemplate>
+
+<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<Grid.ColumnDefinitions>
+		<ColumnDefinition Width="*" />
+		<ColumnDefinition Width="Auto" />
+	</Grid.ColumnDefinitions>
+	<Grid.RowDefinitions>
+		<RowDefinition Height="*" />
+	</Grid.RowDefinitions>
+	<Grid.Padding>
+		<Thickness Left="12" Right="12" />
+	</Grid.Padding>
+
+	<!-- taskName Label -->
+
+	<!-- hours Label -->
+</Grid>
+
+<Label Grid.Column="0" Grid.Row="0" Text="{Binding taskName}" YAlign="Center" Font="Bold" />
+
+<Label Grid.Column="1" Grid.Row="0" Text="{Binding hours}" YAlign="Center" />
+
+<ListView ItemsSource="{Binding TimeEntries}">
+	<!-- ItemTemplate -->
+</ListView>
+
+xmlns:vm="clr-namespace:MobileApp.ViewModels;assembly=MobileApp"
+<ContentPage.BindingContext>
+	<vm:ActivityStreamViewModel />
+</ContentPage.BindingContext>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Views/ActivityStream.xaml.cs
 
 public partial class ActivityStream : ContentPage
