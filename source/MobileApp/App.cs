@@ -1,14 +1,19 @@
 ﻿using System;
 using Xamarin.Forms;
-using MobileApp.Views;
 
 namespace MobileApp
 {
 	public class App
 	{
 		public static Page GetMainPage ()
-		{	
-			return new NavigationPage (new ActivityStream ());
+		{
+			return new ContentPage { 
+				Content = new Label {
+					Text = "Hello, Forms!",
+					VerticalOptions = LayoutOptions.CenterAndExpand,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+				},
+			};
 		}
 	}
 }

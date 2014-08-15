@@ -1,4 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+//////////////////////////////
+ViewsModels/ActivityStreamViewModel.cs
+
+public class ActivityStreamViewModel : ViewModelBase
+{
+	private readonly ObservableCollection<TimeEntry> timeEntries = new ObservableCollection<TimeEntry> ();
+
+	public ObservableCollection<TimeEntry> TimeEntries {
+		get { return this.timeEntries; }
+	}
+
+	public async Task Initialize ()
+	{
+		var fakeData = await FakeDataProvider.GetFakeData ();
+		foreach (var item in fakeData) {
+			this.timeEntries.Add (item);
+		}
+	}
+}
+
+//////////////////////////////
+Views/ActivityStream.xaml
+
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -35,3 +57,26 @@
 		</ListView.ItemTemplate>
 	</ListView>
 </ContentPage>
+
+//////////////////////////////
+Views/ActivityStream.xaml.cs
+
+public partial class ActivityStream : ContentPage
+{
+	public ActivityStream ()
+	{
+		InitializeComponent ();
+	}
+
+	protected override async void OnAppearing ()
+	{
+		this.IsBusy = true;
+		await ((ActivityStreamViewModel)this.BindingContext).Initialize ();
+		this.IsBusy = false;
+	}
+}
+
+//////////////////////////////
+App.cs
+
+return new NavigationPage (new ActivityStream ());

@@ -1,0 +1,59 @@
+Pre-requisites:
+	Need to download Xamarin: installs Android SDK and Mono runtime on Mac/PC
+	Need emulator: http://www.genymotion.com (fast on PC, VERY fast on Mac)
+	If iOS development on PC: Need separate Mac to do iOS builds
+	If iOS development on Mac: Need to download XCode
+
+File -> New Project (PCL)
+	On Mac/Xamarin Studio: PCL Core, Android, iOS
+	On PC/Xamarin Studio: PCL Core, Android
+	On PC/Visual Studio: PCL Core, Android, iOS (must be built on Mac) and Windows Phone
+	(Solution can be opened and shared on all platforms so individual developers can focus on specific platform if needed)
+
+	Genymotion emulator Android OS must match target version of Android project. Can easily download correct Android SDK version using Tools -> Open Android SDK Manager...
+
+Show Android OS version (4.3) in Genymotion emulator, set Android project target to 4.3
+Run app to show "Hello, World!" screen (for all platforms)
+
+Add ViewModels/ActivityStreamViewModel.cs
+	Add TimeEntries observable collection
+		explain ObservableCollection:
+			notifies when changed
+			change notifications are localized (include range that has changed to observer can be smart about updates)
+	Add Initialize method
+		point out async/await (unblocks caller while this method is executing, provides logical and language-level continuations)
+
+Add Views/AcitivityStream.xaml
+	Point out that ContentPage.Content element can be removed
+		Show in source browser: ContentProperty attribute (hint) specifies Content already
+
+	Add ListView xaml (without ItemsSource bound)
+		Explain ListView (displays a list of things)
+		Add ItemTemplate DataTemplate (instructs ListView how to display a thing)
+			Point out that ViewCell.View element can be removed
+				Show in source browser: ContentProperty attribute (hint) specifies View already
+				Show how to set View property explicitly (not again that behavior doesn't change)
+			Add Grid
+			Add taskName Label
+			Add hours Label
+
+Make App.GetMainPage() return ActivityStream
+	Run app, show that nothing shows up
+
+Modify Views/AcitivityStream.xaml
+	Set ListView.ItemsSource binding
+	Run app, show that nothing shows up again
+	
+Briefly explain BindingContext
+	In WPF, called DataContext (not sure why they changed the name, except that it makes a little more sense)
+	
+Modify Views/AcitivityStream.xaml
+	Set BindingContext set in View
+		Show that we can set in code behind
+		Show that because we have parameterless constructor, we can set in XAML also (note that XAML is an object creation language)
+
+	Add OnAppearing() override to call ActivityStreamViewModel.Initialize();
+
+	Run app, show that data appears
+
+BONUS: run in iOS and show that data appears

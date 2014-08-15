@@ -69,7 +69,7 @@ Global
 		{B025F950-AAE1-4EF4-AD40-BED6861E05F6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = iOS\MobileApp.iOS.csproj
+		StartupItem = Android\MobileApp.Android.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
