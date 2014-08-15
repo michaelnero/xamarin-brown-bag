@@ -29,10 +29,13 @@ Views/ActivityStream.xaml
 	x:Class="MobileApp.Views.ActivityStream"
 	Title="Activity stream">
 
-	<ListView>
-		<!-- ItemTemplate -->
-	</ListView>
+	<ContentPage.Content>
+	</ContentPage.Content>
 </ContentPage>
+
+<ListView>
+	<!-- ItemTemplate -->
+</ListView>
 
 <ListView.ItemTemplate>
 	<DataTemplate>
